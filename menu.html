@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Menu Principal</h2>
+
+    <button onclick="location.href='cadastro.html'">Cadastro de Cliente</button><br><br>
+    <button onclick="location.href='clientes.html'">Lista de Clientes</button><br><br>
+    <button onclick="location.href='conta.html'">Cadastro de Conta</button><br><br>
+    <button onclick="location.href='contas.html'">Lista de Contas</button><br><br>
+    <button onclick="location.href='fila.html'">Fila de Atendimento</button><br><br>
+    <button onclick="logout()">Sair</button>
+</div>
+
+<script>
+if (localStorage.getItem("logado") !== "true") {
+    window.location.href = "index.html";
+}
+
+function logout() {
+    localStorage.removeItem("logado");
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

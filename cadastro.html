@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Cadastrar Cliente</h2>
+
+    <input id="nome" placeholder="Nome">
+    <input id="cpf" placeholder="CPF">
+    <input id="telefone" placeholder="Telefone">
+    <input id="email" placeholder="Email">
+    <input id="endereco" placeholder="Endereço">
+
+    <button onclick="salvar()">Salvar</button>
+    <br><br>
+    <button onclick="location.href='menu.html'">Voltar</button>
+</div>
+
+<script>
+if (localStorage.getItem("logado") !== "true") {
+    window.location.href = "index.html";
+}
+
+function salvar() {
+    const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
+    clientes.push({
+        nome: nome.value,
+        cpf: cpf.value,
+        telefone: telefone.value,
+        email: email.value,
+        endereco: endereco.value
+    });
+
+    localStorage.setItem("clientes", JSON.stringify(clientes));
+    alert("Cliente cadastrado!");
+}
+</script>
+
+</body>
+</html>

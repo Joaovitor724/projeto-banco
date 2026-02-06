@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Lista de Contas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Titular</th>
+                <th>Tipo</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+    </table>
+
+    <br>
+    <button onclick="location.href='menu.html'">Voltar</button>
+</div>
+
+<script>
+if (localStorage.getItem("logado") !== "true") {
+    window.location.href = "index.html";
+}
+
+const contas = JSON.parse(localStorage.getItem("contas")) || [];
+const tabela = document.getElementById("tabela");
+
+contas.forEach(c => {
+    tabela.innerHTML += `
+        <tr>
+            <td>${c.numero}</td>
+            <td>${c.titular}</td>
+            <td>${c.tipo}</td>
+            <td>R$ ${c.saldo}</td>
+        </tr>
+    `;
+});
+</script>
+
+</body>
+</html>

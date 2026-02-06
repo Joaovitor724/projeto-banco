@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Conta</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Cadastrar Conta</h2>
+
+    <input id="numero" placeholder="Número da Conta">
+    <input id="titular" placeholder="Titular">
+    <input id="tipo" placeholder="Tipo">
+    <input id="saldo" placeholder="Saldo">
+
+    <button onclick="salvar()">Salvar</button>
+    <br><br>
+    <button onclick="location.href='menu.html'">Voltar</button>
+</div>
+
+<script>
+if (localStorage.getItem("logado") !== "true") {
+    window.location.href = "index.html";
+}
+
+function salvar() {
+    const contas = JSON.parse(localStorage.getItem("contas")) || [];
+
+    contas.push({
+        numero: numero.value,
+        titular: titular.value,
+        tipo: tipo.value,
+        saldo: saldo.value
+    });
+
+    localStorage.setItem("contas", JSON.stringify(contas));
+    alert("Conta cadastrada!");
+}
+</script>
+
+</body>
+</html>

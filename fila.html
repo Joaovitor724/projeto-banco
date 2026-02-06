@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Fila</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Fila de Atendimento</h2>
+
+    <select id="cliente"></select>
+    <button onclick="entrar()">Entrar na Fila</button>
+
+    <ol id="lista"></ol>
+
+    <button onclick="atender()">Atender</button>
+    <br><br>
+    <button onclick="location.href='menu.html'">Voltar</button>
+</div>
+
+<script>
+if (localStorage.getItem("logado") !== "true") {
+    window.location.href = "index.html";
+}
+
+let fila = JSON.parse(localStorage.getItem("fila")) || [];
+const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
+clientes.forEach(c => {
+    cliente.innerHTML += `<option>${c.nome}</option>`;
+});
+
+function render() {
+    lista.innerHTML = "";
+    fila.forEach(n => lista.innerHTML += `<li>${n}</li>`);
+}
+
+function entrar() {
+    fila.push(cliente.value);
+    localStorage.setItem("fila", JSON.stringify(fila));
+    render();
+}
+
+function atender() {
+    fila.shift();
+    localStorage.setItem("fila", JSON.stringify(fila));
+    render();
+}
+
+render();
+</script>
+
+</body>
+</html>
