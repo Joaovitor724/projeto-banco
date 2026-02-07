@@ -5,7 +5,7 @@ Projeto desenvolvido com **HTML, CSS e JavaScript**, simulando a interface de um
 ## 🚀 Tecnologias utilizadas
 - HTML
 - CSS
-- JavaScript (Vanilla)
+- JavaScript 
 
 ## 🎯 Objetivo
 Projeto criado com foco em estudos de desenvolvimento web, praticando:
